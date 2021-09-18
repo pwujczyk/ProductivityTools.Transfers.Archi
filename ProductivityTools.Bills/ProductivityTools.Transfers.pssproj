@@ -26,11 +26,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Compile Include="ProductivityTools.Bills.psd1" />
-    <Compile Include="ProductivityTools.Bills.psm1" />
-    <Compile Include="ProductivityTools.Bills.tests.ps1" />
+    <Folder Include="App\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App\Element.ps1" />
+    <Compile Include="ProductivityTools.Transfers.psd1" />
+    <Compile Include="ProductivityTools.Transfers.psm1" />
+    <Compile Include="Runner.ps1" />
+    <Compile Include="App\TransfersProvider.ps1" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="Build" />
