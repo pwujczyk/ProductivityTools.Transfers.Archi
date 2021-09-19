@@ -1,11 +1,4 @@
-Class Element
-{
-    [String]$Name
-    static [int]$numberOfWheels = 4
-    [System.Collections.ArrayList]$Elements=@()
-    [Decimal]$value
-    [int]$TransferDay
-}
+
 
 
 function FindBusinessService{
@@ -37,9 +30,10 @@ function FindElementName{
 	$xmlsFiles=Get-ChildItem $Path -Recurse 
 	foreach($xmlFile in $xmlsFiles)
 	{
-		[xml]$xml=Get-Content $xmlFile.FullName
+		[xml]$xml=Get-Content $xmlFile.FullName -Encoding utf8
 		if( $xml.BusinessService.id -eq $id)
 		{
+			$xx=$xml.BusinessService.name
 			return $xml.BusinessService.name
 		}
 	}

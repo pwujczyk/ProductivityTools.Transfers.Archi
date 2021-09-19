@@ -1,3 +1,5 @@
+
+
 function SaveToDatbase(){
 	[cmdletbinding()]
 	param(
@@ -16,7 +18,8 @@ function SaveToDatbase(){
 
 	foreach($element in $model.Elements){
 			
-			$query="Insert into [Transfer](Date,Category,Name,Value) VALUES ('$date','$category','$($element.Name)',$($element.value))"
+			Write-Verbose "Inserting $($element.name)"
+			$query="Insert into [Transfer](Date,Category,Name,Value) VALUES ('$date','$category',N'$($element.Name)',$($element.value))"
 			Invoke-SQLQuery -SqlInstance $sqlInstance -DatabaseName $databaseName -Query $query 
 	}
 }

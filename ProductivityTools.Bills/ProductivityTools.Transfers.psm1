@@ -1,5 +1,6 @@
 . "$PSScriptRoot\App\TransfersProvider.ps1"
 . "$PSScriptRoot\App\Database.ps1"
+. "$PSScriptRoot\App\Element.ps1"
 
 function Print{
 	[cmdletbinding()]
