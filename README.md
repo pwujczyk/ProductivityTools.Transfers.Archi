@@ -1,6 +1,5 @@
 <!--Category:Powershell--> 
  <p align="right">
-   <a href="./ProductivityTools.TrainingLog.SDK.md"><img src="Images/Header/documentation_40.png" /></a>
     <a href="https://www.powershellgallery.com/packages/ProductivityTools.TrainingLog.Endomondo/"><img src="Images/Header/Powershell_border_40px.png" /></a>
     <a href="http://productivitytools.tech/import-modulesfromdirectory/"><img src="Images/Header/ProductivityTools_green_40px_2.png" /><a> 
     <a href="https://github.com/ProductivityTools-TrainingLog/ProductivityTools.TrainingLog.Endomondo.Cmdlet"><img src="Images/Header/Github_border_40px.png" /></a>
@@ -14,8 +13,26 @@
 
 # ProductivityTools.Transfers
 
-Project exposes client which can communicate with  [TrainingLog.API](https://github.com/ProductivityTools-TrainingLog/ProductivityTools.TrainingLog.Api). 
+Project saves predefined transfers to the database.
 
-It doesn't need to be used, it make it just simpler. 
+<!--more-->
 
-![SolutionExplorer](Images/SolutionExplorer.png)
+Following documentation is not enough for running application. 
+
+- **Print-AllTransfers** - Displays all transfers it has switch $SaveToDatabase. Which additionally do the same as Save-AllTransfersToDB
+- **Save-AllTransfersToDB** - Saves all transfers to Database.
+
+Module depends on the MasterConfiguration 3 keys are neded:
+
+```json
+"TransfersSqlInstance":".\\sql2019",
+"TransfersDatabse":"Transfers",
+"TransfersCategories":"Proxy,Accout"
+```
+
+In table unique constraint cosists of 
+- Date
+- Category
+- Name
+
+Before inserting data into the database, first rows according to unique constraint are removed.

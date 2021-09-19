@@ -19,23 +19,35 @@ function Print{
 	Write-Output $sum
 }
 
+function GetCategories{
+	[cmdletbinding()]
+	param()
+	
+	$categories=Get-MasterConfiguration -Key TransfersCategories
+	$categoriesArray=$categories.Split(",")
+	return $categoriesArray
+}
+
 
 function Print-AllTransfers{
-	$transfers=GetTransfers Proxy
-	Print $transfers
-	Write-Output ""
 
-	$transfers=GetTransfers ProxyKameralne
-	Print $transfers
-	Write-Output ""
+	[cmdletbinding()]
+	param(
+		[switch]$SaveToDatabase
+	)
 
-	$transfers=GetTransfers Niechorze
-	Print $transfers
-	Write-Output ""
+	$categoriesArray=GetCategories
+	foreach($category in $categoriesArray)
+	{
+		$transfers=GetTransfers $category
+		Print $transfers
+		Write-Output ""
 
-	$transfers=GetTransfers Pensja
-	Print $transfers
-	Write-Output ""
+		if($SaveToDatabase.IsPresent)
+		{
+			SaveToDB $category
+		}
+	}
 }
 
 function SaveToDB{
@@ -48,9 +60,12 @@ function SaveToDB{
 }
 
 function Save-AllTransfersToDB{
-	SaveToDB Proxy
-	SaveToDB ProxyKameralne
-	SaveToDB Niechorze
-	SaveToDB Pensja
-	SaveToDB Proxy
+	[cmdletbinding()]
+	param()
+
+	$categoriesArray=GetCategories
+	foreach($category in $categoriesArray)
+	{
+		SaveToDB $category
+	}
 }
