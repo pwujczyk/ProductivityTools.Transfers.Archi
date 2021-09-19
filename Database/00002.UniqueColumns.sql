@@ -1,0 +1,1 @@
+ALTER TABLE dbo.Transfer ADD CONSTRAINT OnlyOne UNIQUE (Date,Category,Name)

@@ -101,22 +101,6 @@ function FindTransfersFromId{
 	return $elements
 }
 
-function Print{
-	[cmdletbinding()]
-	param(
-	$model
-	)
-	
-	Write-Output $model.Name
-	[decimal]$sum=0
-	foreach($element in $model.Elements)
-	{
-		#Write-Output $element 
-		$sum+=$element.Value
-	}
-	Write-Output $model.Elements |Format-Table -Autosize
-	Write-Output $sum
-}
 
 function GetTransfers{
 
@@ -131,5 +115,4 @@ function GetTransfers{
 	$sallaryId=FindBusinessService $modelPath $core.Name
 	$core.Elements=FindTransfersFromId $modelPath $sallaryId
 	return $core
-
 }

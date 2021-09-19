@@ -30,6 +30,7 @@
     <Folder Include="App\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\Database.ps1" />
     <Compile Include="App\Element.ps1" />
     <Compile Include="ProductivityTools.Transfers.psd1" />
     <Compile Include="ProductivityTools.Transfers.psm1" />
