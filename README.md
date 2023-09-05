@@ -13,7 +13,7 @@
 
 #   Transfers
 
-Project saves predefined transfers to the database.
+Project saves predefined transfers to the database. It uses archi git repository as a source of data.
 
 <!--more-->
 
@@ -36,3 +36,5 @@ In table unique constraint cosists of
 - Name
 
 Before inserting data into the database, first rows according to unique constraint are removed.
+
+
